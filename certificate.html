@@ -5,45 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Certificate</title>
     <style>
-        .certificate-container {
-            width: 638px; /* Container width */
-            height: 260px; /* Container height */
-            font-family: Arial, Helvetica, sans-serif; /* Font family */
-            font-size: 21px; /* Font size */
-            color: #222222; /* Font color */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 0px;
-            box-sizing: border-box; /* Ensure padding is included in the total width and height */
+        body {
+            font-family: Arial, sans-serif;
         }
-        .certificate-container div {
-            margin-bottom: 0px; /* Space between lines */
+        .certificate-container {
+            width: 638px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 2px solid #000;
+            font-size: 20px;
+            line-height: 1.5;
         }
     </style>
 </head>
 <body>
     <div class="certificate-container" id="certificate-container">
-        <!-- Content will be loaded here dynamically -->
+        <!-- Certificate details will be loaded here -->
     </div>
 
     <script>
-        // Function to fetch and display the content from certificate.html.txt
+        // Fetch the content from certificate.html.txt and insert it into the div
         fetch('certificate.html.txt')
             .then(response => response.text())
             .then(data => {
-                // Create a temporary element to extract body content
-                let tempDiv = document.createElement('div');
-                tempDiv.innerHTML = data;
-                
-                // Extract only the content inside the <body> tag
-                const bodyContent = tempDiv.querySelector('body').innerHTML;
-
-                // Insert the body content into the certificate container
-                document.getElementById('certificate-container').innerHTML = bodyContent;
+                document.getElementById('certificate-container').innerHTML = data;
             })
-            .catch(error => console.error('Error fetching the certificate content:', error));
+            .catch(error => console.error('Error loading the certificate:', error));
     </script>
 </body>
 </html>
